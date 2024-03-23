@@ -4,12 +4,32 @@
     <router-link :to="{ name: 'about' }">About</router-link>|
     <router-link :to="{ name: 'jobs' }">Jobs</router-link>
   </nav>
+
+  <button @click="redirect">Redirect</button>
+  <button @click="back">Back</button>
+  <button @click="forward">Forward</button>
   <router-view />
 </template>
 
+<script>
+export default {
+  methods: {
+    redirect() {
+      this.$router.push({ name: "home" });
+    },
+    back() {
+      this.$router.go(-1);
+    },
+    forward() {
+      this.$router.go(1);
+    },
+  },
+};
+</script>
+
 <style>
 #app {
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -31,5 +51,11 @@ nav a.router-link-exact-active {
   background: crimson;
   border-radius: 10px;
   text-decoration: none;
+}
+button {
+  margin: 0 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
 }
 </style>

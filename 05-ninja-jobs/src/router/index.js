@@ -33,7 +33,11 @@ const routes = [
     redirects: "/jobs",
   },
   //catchall 404
-  { path: "/:catchAll(.*)", name: "NotFound", component: NotFound },
+  { 
+    path: "/:catchAll(.*)", 
+    name: "NotFound", 
+    component: NotFound 
+  },
 ];
 
 const router = createRouter({
