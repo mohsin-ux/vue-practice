@@ -10,10 +10,13 @@
   <div v-else>
     <p>data is loading...</p>
   </div>
+  <JobTitle />
 </template>
 
 <script>
+import JobTitle from "../../components/JobTitle";
 export default {
+  components: { JobTitle },
   data() {
     return {
       jobs: [],
