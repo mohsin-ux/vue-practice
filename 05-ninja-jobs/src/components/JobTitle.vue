@@ -1,17 +1,22 @@
 <template>
-  <div class="title">
-    <h1>{{ jobTitle }}</h1>
+  <div v-if="job">
+    <h1>{{ job.title }}</h1>
     <p>The job id is {{ id }}</p>
-    <p>{{ jobDetails }}</p>
+    <p>{{ job.details }}</p>
+  </div>
+  <div v-else>
+    <p>Loading job details...</p>
   </div>
 </template>
+
 <script>
 import JobDetails from "@/views/jobs/JobDetails.vue";
 
 export default {
-  props: ["jobTitle", "id", "jobDetails"],
+  props: ["job"],
 };
 </script>
+
 <style>
 .title {
   width: 900px;
