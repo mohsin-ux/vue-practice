@@ -1,22 +1,17 @@
 <template>
   <div class="title">
-    <h1>hello vue you are so easy</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quibusdam
-      dolor iste excepturi sint qui velit atque quod libero. Enim repudiandae
-      distinctio mollitia incidunt culpa. Eaque dolor, tempore provident,
-      commodi quae modi repellat reprehenderit consequuntur eveniet, sint
-      molestiae accusantium quam ipsa recusandae porro? Perspiciatis asperiores
-      libero eum ratione quo illum? Modi odio, voluptate in aliquid excepturi
-      dolorem ullam, maxime fugit magnam optio eum vitae ipsa quo itaque eius!
-      Ullam blanditiis reiciendis enim laborum fuga praesentium error nemo, eum
-      iusto perspiciatis ea dolore, sint odit adipisci architecto. Quasi ducimus
-      deserunt assumenda eos, ipsa placeat corrupti. Veritatis eveniet at
-      perferendis quis quisquam?
-    </p>
+    <h1>{{ jobTitle }}</h1>
+    <p>The job id is {{ id }}</p>
+    <p>{{ jobDetails }}</p>
   </div>
 </template>
-<script></script>
+<script>
+import JobDetails from "@/views/jobs/JobDetails.vue";
+
+export default {
+  props: ["jobTitle", "id", "jobDetails"],
+};
+</script>
 <style>
 .title {
   width: 900px;
