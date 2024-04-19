@@ -4,14 +4,16 @@
   <div class="home">
     <div v-if="projects.length">
       <div v-for="project in filteredProjects" :key="project.id">
-        <SingleProject :project="project" @delete="handleDelete" @complete ="handleComplete"/>
+        <SingleProject
+          :project="project"
+          @delete="handleDelete"
+          @complete="handleComplete"
+        />
         <!-- <p>{{ project.title }}</p> -->
       </div>
     </div>
   </div>
 </template>
-
-
 
 <script>
 
@@ -27,11 +29,15 @@ export default {
       current: 'all'
     };
   },
-  mounted() {
-    fetch("http://localhost:3000/projects")
-        .then((res) => res.json())
-        .then((data) => (this.projects = data))
-        .catch((err) => console.log(err.message));
+ async mounted() {
+    try{
+      const res = await fetch("http://localhost:3000/projects");
+      const data = await res.json();
+      this.projects = data;
+    }catch(err){ 
+      console.log(err.message)
+    }
+
   },
   methods: {
     handleDelete(id) {
@@ -61,5 +67,5 @@ export default {
   }
   }
 
-};  
+};
 </script>
