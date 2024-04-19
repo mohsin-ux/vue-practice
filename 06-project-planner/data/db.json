@@ -2,20 +2,26 @@
   "projects": [
     {
       "id": "1",
-      "title": "Create new homepage banner",
+      "title": "Create new homepage",
       "details": "Lorem ipsum",
-      "complete": false
+      "complete": true
     },
     {
       "id": "2",
-      "title": "add multiple projects",
+      "title": "add multiple",
       "details": "Lorem ipsum",
       "complete": false
     },
     {
-      "id": "abd0",
-      "title": "hello world",
-      "details": "we are ready to be a very good programmer",
+      "id": "8b15",
+      "title": "i am mohsin",
+      "details": "dfilsjdfklsjdf",
+      "complete": true
+    },
+    {
+      "id": "bab6",
+      "title": "fjklsdjdklfsdjf",
+      "details": "sdjklfklsdkfhi",
       "complete": false
     }
   ]

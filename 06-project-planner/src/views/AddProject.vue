@@ -42,6 +42,7 @@ export default {
         background: white;
         padding: 20px;
         border-radius: 10px;
+        /* text-align: center; */
     }
     label{
         display: block;
@@ -69,7 +70,6 @@ export default {
     form button{
         background: #00ce89;
         margin: 20px auto 0;
-
         padding: 10px;
         border: 0;
         border-radius: 10px;

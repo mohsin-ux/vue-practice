@@ -1,9 +1,12 @@
 <template>
-  <div class="project" :class="{complete: project.complete}">
-    <div  class="actions">
+  <div class="project" :class="{ complete: project.complete }">
+    <div class="actions">
       <h3 @click="showDetails = !showDetails">{{ project.title }}</h3>
       <div class="icons">
-        <span class="material-icons"> edit </span>
+        <router-link :to="{name: 'EditProject', params: {id: project.id}}" >
+          <span class="material-icons"> edit </span>
+        </router-link>
+
         <span @click="deleteProject" class="material-icons"> delete </span>
         <span @click="toggleComplete" class="material-icons tick"> done </span>
       </div>
@@ -15,6 +18,8 @@
   </div>
 </template>
 
+
+
 <script>
 export default {
   name: "SingleProject",
@@ -22,28 +27,32 @@ export default {
   data() {
     return {
       showDetails: false,
-      uri: 'http://localhost:3000/projects/' + this.project.id,
+      uri: "http://localhost:3000/projects/" + this.project.id,
     };
   },
   methods: {
     deleteProject() {
-      fetch(this.uri, {method:'DELETE'})
-        .then(() => this.$emit('delete', this.project.id))
-        .catch(err => console.log(err.message))
+      fetch(this.uri, { method: "DELETE" })
+        .then(() => this.$emit("delete", this.project.id))
+        .catch((err) => console.log(err.message));
     },
-    toggleComplete(){
-      console.log('toggleComplete')
+    toggleComplete() {
+      console.log("toggleComplete");
       fetch(this.uri, {
-        method: 'PATCH',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({complete: !this.project.complete})
-      }).then(() => {
-        this.$emit('complete', this.project.id)
-      }).catch(err => console.log(err.message))
-    }
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ complete: !this.project.complete }),
+      })
+        .then(() => {
+          this.$emit("complete", this.project.id);
+        })
+        .catch((err) => console.log(err.message));
+    },
   },
-}
+};
 </script>
+
+
 
 <style>
 .project {
