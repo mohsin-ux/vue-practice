@@ -1,10 +1,14 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <input type="text" v-model="search" />
+    <PostList v-if="showPosts" :posts="posts" />
+    <button @click="showPosts = !showPosts">show and hide</button>
+    <button @click="posts.pop()">delete post</button>
+
+    <!-- <input type="text" v-model="search" />
     <p>search term - {{ search }}</p>
     <button @click="handleWatch">stop</button>
-    <div v-for="name in matchingNames">{{ name }}</div>
+    <div v-for="name in matchingNames">{{ name }}</div> -->
     <!-- <h2>Refs</h2>
     <p>{{ ninjaOne.name }} - {{ ninjaOne.age }}</p>
     <button @click="updateNinjaOne">Update ninja one</button>
@@ -19,43 +23,57 @@
 
 <script>
 import { ref, reactive, computed, watch, watchEffect } from "vue";
+import PostList from "../components/PostList.vue";
 export default {
   name: "HomeView",
+  components: { PostList },
   setup() {
-    const search = ref("");
-    const names = ref([
-      "mario",
-      "luigi",
-      "yoshi",
-      "toad",
-      "bowser",
-      "koopa",
-      "peach",
+    const posts = ref([
+      {
+        title: "welcome to the blog",
+        body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam architecto soluta, corrupti ratione natus praesentium saepe odio libero ab explicabo unde dicta temporibus beatae! Obcaecati, molestias, veniam quod et asperiores dolore enim laudantium aliquid modi, nulla odit? Omnis reiciendis, voluptas quaerat aut accusamus tempore, exercitationem vero expedita ullam quidem quo blanditiis cum nesciunt magni, dolor nam magnam mollitia nihil id quos. Adipisci animi labore fuga odio itaque rerum voluptatum ducimus? Assumenda, atque. Illum aut possimus, fuga eligendi sed ex, similique eos numquam veritatis earum quidem ratione, modi necessitatibus amet itaque aperiam ea expedita. Eveniet, enim ducimus illo provident molestias atque.",
+        id: 1,
+      },
+      { title: "top5 CSS tips", body: "Lorem ipsum", id: 2 },
     ]);
+    const showPosts = ref(true)
 
-    const stopWatch = watch(search, () => {
-      console.log('watch function ran')
-    })
+    return { posts, showPosts };
 
-    const stopEffect = watchEffect(() => {
-      console.log('watchEffect function ran', search.value)
-    })
+    // const search = ref("");
+    // const names = ref([
+    //   "mario",
+    //   "luigi",
+    //   "yoshi",
+    //   "toad",
+    //   "bowser",
+    //   "koopa",
+    //   "peach",
+    // ]);
 
-    const  handleWatch = () => {
-      stopWatch()
-      stopEffect()
-    }
+    // const stopWatch = watch(search, () => {
+    //   console.log('watch function ran')
+    // })
 
-    const matchingNames = computed({
-      get() {
-        return names.value.filter((name) => name.includes(search.value));
-      },
-      set(newValue) {
-        newValue   = [];
-      },
-    });
+    // const stopEffect = watchEffect(() => {
+    //   console.log('watchEffect function ran', search.value)
+    // })
 
-    return { search, names, matchingNames, handleWatch };
+    // const  handleWatch = () => {
+    //   stopWatch()
+    //   stopEffect()
+    // }
+
+    // const matchingNames = computed({
+    //   get() {
+    //     return names.value.filter((name) => name.includes(search.value));
+    //   },
+    //   set(newValue) {
+    //     newValue   = [];
+    //   },
+    // });
+
+    // return { search, names, matchingNames, handleWatch };
 
     // console.log('setup')
 
