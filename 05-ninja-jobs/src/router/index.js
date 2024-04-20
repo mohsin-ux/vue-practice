@@ -31,7 +31,7 @@ const routes = [
   {
     path: "/all-jobs",
     redirects: "/jobs",
-  },
+  },  
   //catchall 404
   { 
     path: "/:catchAll(.*)", 
