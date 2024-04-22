@@ -1,6 +1,11 @@
 <template>
-    <h2>{{ post.title }}</h2>
-    <p>{{ snippet }}</p>
+    <router-link :to="{name: 'Details', params: {id: post.id}}" >
+        <h2>{{ post.title }}</h2>
+    </router-link>
+    <p>{{ snippet }}</p>    
+    <span v-for="tags in post.tags" :key="tags">
+        #{{ tags }}
+    </span>
 </template>
 
 <script>
@@ -13,7 +18,7 @@ export default {
         const snippet = computed(() => {
             return props.post.body.substring(0, 50) + '....'
         })
-
+        
         return { snippet }
 
     }

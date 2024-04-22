@@ -9,16 +9,13 @@
 </template>
 
 <script>
-import { onMounted, onUnmounted, onUpdated } from 'vue';
 import SinglePost from './SinglePost.vue'
 export default {
   props: ['posts'],
   components: {SinglePost},
     setup(props) {
-        console.log(props.posts)
-        onMounted(() => console.log('onMounted'))
-        onUnmounted(() => console.log('onUnmounted'))
-        onUpdated(() => console.log('onUpdated'))
+        // console.log(props.posts)
+
         
     },
 }

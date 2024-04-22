@@ -1,0 +1,24 @@
+    {
+        "posts" : [
+            {
+                "id": 1,
+                "title": "Welcome to the new blog",
+                "body": "This is the first post",
+                "tags": [
+                    "webdev",
+                    "coding",
+                    "news"
+                ]
+            },
+            {
+                "id": 1,
+                "title": "top 5 css tips",
+                "body": "This is the first post",
+                "tags": [
+                    "css",
+                    "webdev",
+                    "coding"
+                ]
+            }
+        ]
+    }
