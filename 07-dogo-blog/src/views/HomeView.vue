@@ -5,7 +5,10 @@
     <div v-if="posts.length">
       <PostList :posts="posts" />
     </div>
-    <div v-else>loading....</div>
+    <div v-else>
+      <Spinner />
+      loading....
+    </div>
     
 
 </div>
@@ -17,11 +20,12 @@
 import { ref, reactive, computed, watch, watchEffect } from "vue";
 import PostList from "../components/PostList.vue";
 import getPosts from "../composables/getPosts";
+import Spinner from "../components/Spinner.vue";  
 export default {
   name: "HomeView",
-  components: { PostList },
+  components: { PostList, Spinner },
   setup() {
-    const {posts, error, load} = getPosts()
+    const {posts  , error, load} = getPosts()
     load()
     
     
@@ -29,3 +33,11 @@ export default {
   },
 };
 </script>
+
+<style>
+  .home{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+</style>
