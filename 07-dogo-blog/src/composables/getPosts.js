@@ -18,10 +18,10 @@ const getPosts = () => {
         if(!data.ok) {
           throw Error('no data available')
         }
-        console.log(posts.value)
+        // console.log(posts.value)
       }catch(err){
         error.value =  err.message
-        console.log(error.value)
+        // console.log(error.value)
       }
 
     } 
